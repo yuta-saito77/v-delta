@@ -67,6 +67,14 @@ const sourceChecks = await Promise.allSettled([
 await save();
 
 const webhook = process.env.DISCORD_WEBHOOK_URL;
+if (webhook && !state.connectionTestQueued) {
+  state.pending.unshift({
+    discord: '【接続テスト】V-DeltaのGitHub ActionsからDiscordに接続できました。',
+    x: '【下書きテスト】V-Deltaの接続確認です。',
+  });
+  state.connectionTestQueued = true;
+  await save();
+}
 while (state.pending.length) {
   if (!webhook || !/^https:\/\/discord\.com\/api\/webhooks\/\d+\/[A-Za-z0-9_-]+$/.test(webhook)) {
     throw new Error('Set the DISCORD_WEBHOOK_URL Actions secret');
@@ -90,6 +98,7 @@ while (state.pending.length) {
   }
   if (!response.ok) throw new Error(`Discord delivery failed (HTTP ${response.status})`);
   state.pending.shift();
+  console.log('Discord notification delivered.');
   await save();
 }
 for (const result of sourceChecks) {
