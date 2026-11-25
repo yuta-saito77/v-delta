@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#11141b">
+<meta name="description" content="V-DeltaのVALORANT更新監視ダッシュボード">
+<title>V-Delta | VALORANT更新監視</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="app.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<main>
+<header><div class="brand"><img src="icon-192.png" alt="" width="48" height="48"><div><h1>V-Delta</h1><p>VALORANT更新監視</p></div></div><button id="refresh" type="button">再読み込み</button></header>
+<p id="feedback" role="status">監視データを読み込んでいます。</p>
+<section class="grid" aria-label="監視状況">
+<article><h2>最終チェック</h2><p id="last-run" class="value">—</p><p id="run-status"></p></article>
+<article><h2>AP・PC版の配信ビルド</h2><p id="build" class="value mono">—</p><p id="build-date"></p></article>
+<article><h2>最新の公式パッチノート</h2><p id="patch" class="value">—</p><a id="official" href="https://playvalorant.com/ja-jp/news/tags/patch-notes/">公式パッチノート</a></article>
+</section>
+<section class="panel"><h2>監視の実行履歴</h2><ul id="runs"></ul></section>
+<section class="panel"><h2>X投稿の下書き</h2><label for="draft">投稿文</label><textarea id="draft" rows="4" placeholder="最新パッチの投稿文を作成"></textarea><a id="compose" class="action" href="https://twitter.com/intent/tweet" target="_blank" rel="noopener noreferrer">Xで下書きを開く</a></section>
+<details><summary>スマホのホーム画面に追加</summary><p>iPhoneはSafariの共有メニューから「ホーム画面に追加」。AndroidはChromeのメニューから「ホーム画面に追加」または「アプリをインストール」を選びます。</p></details>
+<footer><a href="https://github.com/yuta-saito77/v-delta/actions/workflows/watch.yml">GitHub Actions</a><span>非公式のVALORANT更新情報</span></footer>
+</main>
+</body>
+</html>
